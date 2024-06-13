@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../../axiosConfig';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const BudgetForm = () => {
@@ -17,7 +17,7 @@ const BudgetForm = () => {
       const fetchBudget = async () => {
         try {
           const token = localStorage.getItem('authToken');
-          const res = await axios.get(`${process.env.REACT_APP_API_URL}/budgets/${id}`, {
+          const res = await axios.get(`https://finance-manager-backend-gm5t.onrender.com/api/budgets/${id}`, {
             headers: { Authorization: `Bearer ${token}` }
           });
           const { category, limit, startDate, endDate } = res.data;
@@ -37,12 +37,14 @@ const BudgetForm = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('authToken');
+      const budgetData = { category, limit, startDate, endDate };
+
       if (isEditMode) {
-        await axios.put(`${process.env.REACT_APP_API_URL}/budgets/${id}`, { category, limit, startDate, endDate }, {
+        await axios.put(`https://finance-manager-backend-gm5t.onrender.com/api/budgets/${id}`, budgetData, {
           headers: { Authorization: `Bearer ${token}` }
         });
       } else {
-        await axios.post(`${process.env.REACT_APP_API_URL}/budgets`, { category, limit, startDate, endDate }, {
+        await axios.post(`https://finance-manager-backend-gm5t.onrender.com/api/budgets`, budgetData, {
           headers: { Authorization: `Bearer ${token}` }
         });
       }

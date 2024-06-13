@@ -13,7 +13,7 @@ const UserProfile = () => {
     const fetchUserProfile = async () => {
       try {
         const token = localStorage.getItem('authToken');
-        const { data } = await axios.get('/api/users/profile', {
+        const { data } = await axios.get('https://finance-manager-backend-gm5t.onrender.com/api/users/profile', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setProfile(data);
@@ -36,7 +36,7 @@ const UserProfile = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('authToken');
-      await axios.put('/api/users/profile', profile, {
+      await axios.put('https://finance-manager-backend-gm5t.onrender.com/api/users/profile', profile, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert('Profile updated successfully');

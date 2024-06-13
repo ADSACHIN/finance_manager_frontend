@@ -21,7 +21,7 @@ const Register = () => {
     }
     setIsLoading(true);
     try {
-      await axios.post('/auth/register', { username, email, password });
+      await axios.post('api/auth/register', { username, email, password });
       navigate('/login');
     } catch (error) {
       if (error.response && error.response.data && error.response.data.errors) {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../../axiosConfig';
 import { Container, TextField, Button, Typography, MenuItem, Select, InputLabel, FormControl } from '@mui/material';
 
 const TransactionForm = () => {
@@ -17,7 +17,7 @@ const TransactionForm = () => {
       const fetchTransaction = async () => {
         try {
           const token = localStorage.getItem('authToken');
-          const res = await axios.get(`${process.env.REACT_APP_API_URL}/transactions/${id}`, {
+          const res = await axios.get(`https://finance-manager-backend-gm5t.onrender.com/api/transactions/${id}`, {
             headers: { Authorization: `Bearer ${token}` }
           });
           const { description, amount, date, category } = res.data;
@@ -39,11 +39,11 @@ const TransactionForm = () => {
       const token = localStorage.getItem('authToken');
       const transactionData = { description, amount, date, category };
       if (isEditMode) {
-        await axios.put(`${process.env.REACT_APP_API_URL}/transactions/${id}`, transactionData, {
+        await axios.put(`https://finance-manager-backend-gm5t.onrender.com/api/transactions/${id}`, transactionData, {
           headers: { Authorization: `Bearer ${token}` }
         });
       } else {
-        await axios.post(`${process.env.REACT_APP_API_URL}/transactions`, transactionData, {
+        await axios.post(`https://finance-manager-backend-gm5t.onrender.com/api/transactions`, transactionData, {
           headers: { Authorization: `Bearer ${token}` }
         });
       }

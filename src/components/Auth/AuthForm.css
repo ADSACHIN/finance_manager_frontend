@@ -204,4 +204,14 @@ section .colour:nth-child(3) { background: #9e06f0; }
     color: red;
     margin-top: 10px;
   }
-  
+  .register{
+   
+    
+    font-size: 24px;
+    font-weight: 600;
+    font-style: italic;
+    position: relative;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+    
+  }

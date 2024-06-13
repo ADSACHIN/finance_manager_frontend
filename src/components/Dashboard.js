@@ -22,7 +22,7 @@ const Dashboard = () => {
     const fetchBudgets = async () => {
       try {
         const token = localStorage.getItem('authToken');
-        const budgetRes = await axios.get('/api/budgets', {
+        const budgetRes = await axios.get('https://finance-manager-backend-gm5t.onrender.com/api/budgets', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setBudgets(budgetRes.data);
@@ -35,7 +35,7 @@ const Dashboard = () => {
     const fetchTransactions = async () => {
       try {
         const token = localStorage.getItem('authToken');
-        const transactionRes = await axios.get('/api/transactions', {
+        const transactionRes = await axios.get('https://finance-manager-backend-gm5t.onrender.com/api/transactions', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setTransactions(transactionRes.data);
@@ -48,7 +48,7 @@ const Dashboard = () => {
     const fetchGoals = async () => {
       try {
         const token = localStorage.getItem('authToken');
-        const goalsRes = await axios.get('/api/goals', {
+        const goalsRes = await axios.get('https://finance-manager-backend-gm5t.onrender.com/api/goals', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setGoals(goalsRes.data);

@@ -10,7 +10,7 @@ const BudgetList = () => {
   useEffect(() => {
     const fetchBudgets = async () => {
       const token = localStorage.getItem('authToken');
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}/budgets`, {
+      const res = await axios.get(`https://finance-manager-backend-gm5t.onrender.com/api/budgets`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setBudgets(res.data);
@@ -21,7 +21,7 @@ const BudgetList = () => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem('authToken');
-      await axios.delete(`${process.env.REACT_APP_API_URL}/budgets/${id}`, {
+      await axios.delete(`https://finance-manager-backend-gm5t.onrender.com/api/budgets/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setBudgets(budgets.filter(budget => budget._id !== id));

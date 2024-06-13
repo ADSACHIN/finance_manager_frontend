@@ -10,7 +10,7 @@ const GoalList = () => {
   useEffect(() => {
     const fetchGoals = async () => {
       const token = localStorage.getItem('authToken');
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}/goals`, {
+      const res = await axios.get(`https://finance-manager-backend-gm5t.onrender.com/api/goals`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setGoals(res.data);
@@ -21,7 +21,7 @@ const GoalList = () => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem('authToken');
-      await axios.delete(`${process.env.REACT_APP_API_URL}/goals/${id}`, {
+      await axios.delete(`https://finance-manager-backend-gm5t.onrender.com/api/goals/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setGoals(goals.filter(goal => goal._id !== id));

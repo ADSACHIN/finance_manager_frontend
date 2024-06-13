@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../../axiosConfig';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -10,10 +10,14 @@ const TransactionList = () => {
   useEffect(() => {
     const fetchTransactions = async () => {
       const token = localStorage.getItem('authToken');
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}/transactions`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      setTransactions(res.data);
+      try {
+        const res = await axios.get('/api/transactions', {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        setTransactions(res.data);
+      } catch (error) {
+        console.error('Error fetching transactions:', error);
+      }
     };
     fetchTransactions();
   }, []);
@@ -21,12 +25,12 @@ const TransactionList = () => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem('authToken');
-      await axios.delete(`${process.env.REACT_APP_API_URL}/transactions/${id}`, {
+      await axios.delete(`/api/transactions/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setTransactions(transactions.filter(transaction => transaction._id !== id));
     } catch (error) {
-      console.error(error);
+      console.error('Error deleting transaction:', error);
     }
   };
 

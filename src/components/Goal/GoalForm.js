@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../../axiosConfig';
 import { Container, TextField, Button, Typography } from '@mui/material';
 
 const GoalForm = () => {
@@ -17,7 +17,7 @@ const GoalForm = () => {
       const fetchGoal = async () => {
         try {
           const token = localStorage.getItem('authToken');
-          const res = await axios.get(`${process.env.REACT_APP_API_URL}/goals/${id}`, {
+          const res = await axios.get(`https://finance-manager-backend-gm5t.onrender.com/api/goals/${id}`, {
             headers: { Authorization: `Bearer ${token}` }
           });
           const { name, amount, targetDate, currentAmount } = res.data;
@@ -38,11 +38,11 @@ const GoalForm = () => {
     try {
       const token = localStorage.getItem('authToken');
       if (isEditMode) {
-        await axios.put(`${process.env.REACT_APP_API_URL}/goals/${id}`, { name, amount, targetDate, currentAmount }, {
+        await axios.put(`https://finance-manager-backend-gm5t.onrender.com/api/goals/${id}`, { name, amount, targetDate, currentAmount }, {
           headers: { Authorization: `Bearer ${token}` }
         });
       } else {
-        await axios.post(`${process.env.REACT_APP_API_URL}/goals`, { name, amount, targetDate, currentAmount }, {
+        await axios.post(`api/goals`, { name, amount, targetDate, currentAmount }, {
           headers: { Authorization: `Bearer ${token}` }
         });
       }
