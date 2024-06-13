@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.body {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section {
+    position: relative;
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+section .colour {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    filter: blur(150px);
+    animation: animated 25s linear infinite;
+}
+
+@keyframes animated {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(100px); }
+}
+
+section .colour:nth-child(1) { background: #e310e3; }
+section .colour:nth-child(2) { background: #005eff; }
+section .colour:nth-child(3) { background: #9e06f0; }
+
+.box {
+    position: relative;
+    z-index: 2;
+}
+
+.box .square {
+    position: absolute;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    background: rgba(238, 130, 130, 0.1);
+    animation: animate 10s linear infinite;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 10px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 10px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes animate {
+    0%, 100% { transform: translateX(-40px); }
+    50% { transform: translateX(40px); }
+}
+
+.box .square:nth-child(1) {
+    top: -350px;
+    left: -60px;
+    width: 100px;
+    height: 100px;
+}
+.box .square:nth-child(2) {
+    top: 150px;
+    left: -120px;
+    width: 120px;
+    height: 120px;
+}
+.box .square:nth-child(3) {
+    width: 100px;
+    height: 100px;
+    right: 150px;
+    bottom: -30px;
+}
+.box .square:nth-child(4) {
+    left: 200px;
+    width: 100px;
+    height: 80px;
+    bottom: -220px;
+}
+.box .square:nth-child(5) {
+    top: -80px;
+    left: 140px;
+    width: 60px;
+    height: 60px;
+}
+.box .square:nth-child(6) {
+    top: 190px;
+    left: 100px;
+    width: 100px;
+    height: 100px;
+}
+
+.container {
+    width: 400px;
+    display: flex;
+    min-height: 400px;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 10px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 10px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.form {
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    position: relative;
+}
+
+.form h2 {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    position: relative;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+}
+
+.form h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    bottom: -10px;
+    background: #fff;
+}
+
+.input__box {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.input__box input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    padding: 10px 20px;
+    border-left: 3px solid #ff0aff;
+    font-size: 16px;
+    color: #fff;
+    outline: none;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+}
+
+.input__box input::placeholder {
+    color: #fff;
+}
+
+.input__box input:focus {
+    border-left: 3px solid #fff;
+}
+
+.input__box input[type="submit"] {
+    background: #fff;
+    color: #ff0aff;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 0;
+    letter-spacing: 1px;
+    transition: all 0.5s ease;
+}
+
+.input__box input[type="submit"]:hover {
+    border-left: 3px solid #ff0aff;
+    background: linear-gradient(130deg, #ff0aff, #8900ff);
+    color: #fff;
+}
+
+.forget {
+    margin-top: -15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.forget a {
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.forget a:hover {
+    text-decoration: underline;
+}
+.error {
+    color: red;
+    margin-top: 10px;
+  }
+  

@@ -1,0 +1,35 @@
+/* Home.css */
+
+.home-container {
+  background-image: linear-gradient(to left, rgba(69, 107, 185, 0), rgb(128, 35, 221));
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .sidebar-column {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .main-content {
+    padding: 20px;
+  }
+  
+  .welcome-text h1 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+  
+  .welcome-text p {
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+  

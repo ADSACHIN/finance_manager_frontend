@@ -1,0 +1,122 @@
+.navbar {
+  background-image: linear-gradient(to left, rgba(69, 107, 185, 0), rgb(119, 52, 185));
+}
+
+.navbar-brand {
+  color: #ffffff !important;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+  color: #ffffff !important;
+  margin-right: 15px;
+  font-size: 1rem;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #d4d4d4 !important;
+}
+
+.navbar-nav .nav-dropdown {
+  color: #ffffff !important;
+}
+
+.navbar-nav .dropdown-menu {
+  background-color: #343a40;
+}
+
+.navbar-nav .dropdown-item {
+  color: #ffffff !important;
+}
+
+.navbar-nav .dropdown-item:hover {
+  background-color: #495057;
+  color: #ffffff !important;
+}
+/* Header.css */
+
+/* Round profile dropdown */
+.profile-dropdown .dropdown-menu {
+  border-radius: 10px; /* Adjust the border-radius as needed */
+}
+
+.profile-dropdown .dropdown-toggle::after {
+  border-top: 0;
+  border-bottom: 0.3em solid;
+  border-left: 0.3em solid transparent;
+  border-right: 0.3em solid transparent;
+  vertical-align: middle;
+}
+
+.profile-dropdown .dropdown-toggle::before {
+  border-top: 0.3em solid;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+  border-right: 0.3em solid transparent;
+  vertical-align: middle;
+}
+
+/* Adjust the spacing between profile name and dropdown indicator */
+.profile-dropdown .dropdown-toggle {
+  padding-right: 20px; /* Adjust the padding as needed */
+}
+.avatar-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.avatar-container img {
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.avatar-container img.selected {
+  border: 2px solid #007bff; /* Highlight the selected avatar */
+}
+/* Header.css */
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Makes the avatar round */
+  background-image: linear-gradient(to top, rgba(69, 107, 185, 0), rgb(209, 72, 159));
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  position: absolute; /* Position it absolutely */
+  top: 10px; /* Position from the top */
+  right: 10px; /* Position from the right */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-options {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-options a {
+  text-decoration: none;
+  color: #333;
+  padding: 5px;
+}
+
+.profile-options span {
+  color: #ff0000; /* Change color for Logout button */
+  cursor: pointer;
+  padding: 5px;
+}
+
+.profile-options a:hover,
+.profile-options span:hover {
+  background-color: #f4f4f4; /* Change background color on hover */
+}

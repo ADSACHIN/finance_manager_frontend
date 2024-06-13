@@ -1,0 +1,18 @@
+/* Add your custom styles here */
+.spending-prediction {
+    padding: 20px;
+  }
+  
+  .spending-prediction form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .spending-prediction form div {
+    margin-bottom: 10px;
+  }
+  
+  .spending-prediction button {
+    align-self: flex-start;
+  }
+  

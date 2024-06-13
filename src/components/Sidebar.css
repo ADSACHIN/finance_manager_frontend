@@ -1,0 +1,28 @@
+/* Sidebar.css */
+
+.sidebar {
+  background-image: linear-gradient(to left, rgba(29, 85, 197, 0), rgb(213, 123, 224));
+  backdrop-filter: blur(5px);
+  padding: 20px;
+  height: 100vh;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar ul {
+  list-style-type: none;
+}
+
+.sidebar ul li {
+  margin: 20px 0;
+}
+
+.sidebar ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.sidebar ul li a:hover {
+  color: #ff0aff;
+}
