@@ -13,7 +13,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('api/auth/login', { email, password });
+      const res = await axios.post('https://finance-manager-backend-gm5t.onrender.com/api/auth/login', { email, password });
       setUser(res.data);
       localStorage.setItem('authToken', res.data.token);
       navigate('/dashboard');

@@ -20,12 +20,14 @@ import SpendingPrediction from './components/SpendingPrediction';
 import TransactionForm from './components/Transaction/TransactionForm';
 import TransactionList from './components/Transaction/TransactionList';
 import UserProfile from './components/Auth/UserProfile';
+import Sidebar from './components/Sidebar';
 
 
 const App = () => (
   <AuthProvider>
     <Router>
       <Header />
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
