@@ -11,13 +11,13 @@ const BudgetForm = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const isEditMode = !!id;
-
+  const apiUrl = process.env.REACT_APP_API_URL;
   useEffect(() => {
     if (isEditMode) {
       const fetchBudget = async () => {
         try {
           const token = localStorage.getItem('authToken');
-          const res = await axios.get(`https://finance-manager-backend-gm5t.onrender.com/api/budgets/${id}`, {
+          const res = await axios.get(`${apiUrl}/api/budgets/${id}`, {
             headers: { Authorization: `Bearer ${token}` }
           });
           const { category, limit, startDate, endDate } = res.data;
@@ -40,11 +40,11 @@ const BudgetForm = () => {
       const budgetData = { category, limit, startDate, endDate };
 
       if (isEditMode) {
-        await axios.put(`https://finance-manager-backend-gm5t.onrender.com/api/budgets/${id}`, budgetData, {
+        await axios.put(`${apiUrl}/api/budgets/${id}`, budgetData, {
           headers: { Authorization: `Bearer ${token}` }
         });
       } else {
-        await axios.post(`https://finance-manager-backend-gm5t.onrender.com/api/budgets`, budgetData, {
+        await axios.post(`${apiUrl}/api/budgets`, budgetData, {
           headers: { Authorization: `Bearer ${token}` }
         });
       }

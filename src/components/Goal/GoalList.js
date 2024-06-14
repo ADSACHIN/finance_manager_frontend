@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../../axiosConfig';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const GoalList = () => {
   const [goals, setGoals] = useState([]);
   const navigate = useNavigate();
-
+  const apiUrl = process.env.REACT_APP_API_URL;
   useEffect(() => {
     const fetchGoals = async () => {
       const token = localStorage.getItem('authToken');
-      const res = await axios.get(`https://finance-manager-backend-gm5t.onrender.com/api/goals`, {
+      const res = await axios.get(`${apiUrl}/api/goals`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setGoals(res.data);
@@ -21,7 +21,7 @@ const GoalList = () => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem('authToken');
-      await axios.delete(`https://finance-manager-backend-gm5t.onrender.com/api/goals/${id}`, {
+      await axios.delete(`${apiUrl}/api/goals/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setGoals(goals.filter(goal => goal._id !== id));

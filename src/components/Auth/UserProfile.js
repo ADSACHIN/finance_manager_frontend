@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
+import axios from '../../axiosConfig';
 import { AuthContext } from '../../context/AuthContext';
 import './UserProfile.css'; // Ensure you have this CSS file for styling
 
@@ -8,12 +8,12 @@ const UserProfile = () => {
   const [profile, setProfile] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const apiUrl = process.env.REACT_APP_API_URL;
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
         const token = localStorage.getItem('authToken');
-        const { data } = await axios.get('https://finance-manager-backend-gm5t.onrender.com/api/users/profile', {
+        const { data } = await axios.get(`${apiUrl}/api/users/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setProfile(data);
@@ -36,7 +36,7 @@ const UserProfile = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('authToken');
-      await axios.put('https://finance-manager-backend-gm5t.onrender.com/api/users/profile', profile, {
+      await axios.put(`${apiUrl}/api/users/profile`, profile, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert('Profile updated successfully');

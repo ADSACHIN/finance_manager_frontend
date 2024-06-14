@@ -11,13 +11,13 @@ const GoalForm = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const isEditMode = !!id;
-
+  const apiUrl = process.env.REACT_APP_API_URL;
   useEffect(() => {
     if (isEditMode) {
       const fetchGoal = async () => {
         try {
           const token = localStorage.getItem('authToken');
-          const res = await axios.get(`https://finance-manager-backend-gm5t.onrender.com/api/goals/${id}`, {
+          const res = await axios.get(`${apiUrl}/api/goals/${id}`, {
             headers: { Authorization: `Bearer ${token}` }
           });
           const { name, amount, targetDate, currentAmount } = res.data;
@@ -38,11 +38,11 @@ const GoalForm = () => {
     try {
       const token = localStorage.getItem('authToken');
       if (isEditMode) {
-        await axios.put(`https://finance-manager-backend-gm5t.onrender.com/api/goals/${id}`, { name, amount, targetDate, currentAmount }, {
+        await axios.put(`${apiUrl}/api/goals/${id}`, { name, amount, targetDate, currentAmount }, {
           headers: { Authorization: `Bearer ${token}` }
         });
       } else {
-        await axios.post(`api/goals`, { name, amount, targetDate, currentAmount }, {
+        await axios.post(`${apiUrl}/api/goals`, { name, amount, targetDate, currentAmount }, {
           headers: { Authorization: `Bearer ${token}` }
         });
       }

@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../../axiosConfig';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const BudgetList = () => {
   const [budgets, setBudgets] = useState([]);
   const navigate = useNavigate();
-
+  const apiUrl = process.env.REACT_APP_API_URL;
   useEffect(() => {
     const fetchBudgets = async () => {
       const token = localStorage.getItem('authToken');
-      const res = await axios.get(`https://finance-manager-backend-gm5t.onrender.com/api/budgets`, {
+      const res = await axios.get(`${apiUrl}/api/budgets`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setBudgets(res.data);
@@ -21,7 +21,7 @@ const BudgetList = () => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem('authToken');
-      await axios.delete(`https://finance-manager-backend-gm5t.onrender.com/api/budgets/${id}`, {
+      await axios.delete(`${apiUrl}/api/budgets/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setBudgets(budgets.filter(budget => budget._id !== id));

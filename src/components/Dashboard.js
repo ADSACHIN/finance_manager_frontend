@@ -2,13 +2,12 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { AuthContext } from '../context/AuthContext';
 import Sidebar from './Sidebar';
-import axios from 'axios';
+import axios from '../axiosConfig';
 import BudgetChart from './charts/BudgetChart';
 import TransactionChart from './charts/TransactionChart';
 import GoalChart from './charts/GoalChart';
 import './Dashboard.css';
-import SpendingPrediction from './SpendingPrediction';
-import Header from './Header';
+
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
@@ -17,12 +16,13 @@ const Dashboard = () => {
   const [goals, setGoals] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  
+  const apiUrl = process.env.REACT_APP_API_URL;
   useEffect(() => {
     const fetchBudgets = async () => {
       try {
         const token = localStorage.getItem('authToken');
-        const budgetRes = await axios.get('https://finance-manager-backend-gm5t.onrender.com/api/budgets', {
+        const budgetRes = await axios.get(`${apiUrl}/api/budgets`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setBudgets(budgetRes.data);
@@ -35,7 +35,7 @@ const Dashboard = () => {
     const fetchTransactions = async () => {
       try {
         const token = localStorage.getItem('authToken');
-        const transactionRes = await axios.get('https://finance-manager-backend-gm5t.onrender.com/api/transactions', {
+        const transactionRes = await axios.get(`${apiUrl}/api/transactions`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setTransactions(transactionRes.data);
@@ -48,7 +48,7 @@ const Dashboard = () => {
     const fetchGoals = async () => {
       try {
         const token = localStorage.getItem('authToken');
-        const goalsRes = await axios.get('https://finance-manager-backend-gm5t.onrender.com/api/goals', {
+        const goalsRes = await axios.get(`${apiUrl}/api/goals`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setGoals(goalsRes.data);

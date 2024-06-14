@@ -11,7 +11,7 @@ const Register = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-
+  const apiUrl = process.env.REACT_APP_API_URL;
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -21,7 +21,7 @@ const Register = () => {
     }
     setIsLoading(true);
     try {
-      await axios.post('api/auth/register', { username, email, password });
+      await axios.post(`${apiUrl}api/auth/register`, { username, email, password });
       navigate('/login');
     } catch (error) {
       if (error.response && error.response.data && error.response.data.errors) {

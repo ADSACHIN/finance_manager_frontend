@@ -6,12 +6,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const TransactionList = () => {
   const [transactions, setTransactions] = useState([]);
   const navigate = useNavigate();
-
+  const apiUrl = process.env.REACT_APP_API_URL;
   useEffect(() => {
     const fetchTransactions = async () => {
       const token = localStorage.getItem('authToken');
       try {
-        const res = await axios.get('/api/transactions', {
+        const res = await axios.get(`${apiUrl}/api/transactions`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setTransactions(res.data);
@@ -25,7 +25,7 @@ const TransactionList = () => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem('authToken');
-      await axios.delete(`/api/transactions/${id}`, {
+      await axios.delete(`${apiUrl}/api/transactions/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setTransactions(transactions.filter(transaction => transaction._id !== id));

@@ -11,13 +11,13 @@ const TransactionForm = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const isEditMode = !!id;
-
+  const apiUrl = process.env.REACT_APP_API_URL;
   useEffect(() => {
     if (isEditMode) {
       const fetchTransaction = async () => {
         try {
           const token = localStorage.getItem('authToken');
-          const res = await axios.get(`https://finance-manager-backend-gm5t.onrender.com/api/transactions/${id}`, {
+          const res = await axios.get(`${apiUrl}/api/transactions/${id}`, {
             headers: { Authorization: `Bearer ${token}` }
           });
           const { description, amount, date, category } = res.data;
@@ -39,11 +39,11 @@ const TransactionForm = () => {
       const token = localStorage.getItem('authToken');
       const transactionData = { description, amount, date, category };
       if (isEditMode) {
-        await axios.put(`https://finance-manager-backend-gm5t.onrender.com/api/transactions/${id}`, transactionData, {
+        await axios.put(`${apiUrl}/api/transactions/${id}`, transactionData, {
           headers: { Authorization: `Bearer ${token}` }
         });
       } else {
-        await axios.post(`https://finance-manager-backend-gm5t.onrender.com/api/transactions`, transactionData, {
+        await axios.post(`${apiUrl}/api/transactions`, transactionData, {
           headers: { Authorization: `Bearer ${token}` }
         });
       }
