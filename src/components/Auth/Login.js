@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import axios from '../../axiosConfig';
 import { AuthContext } from '../../context/AuthContext';
 import './AuthForm.css';
@@ -63,7 +63,7 @@ const Login = () => {
                 <input type="submit" value="Login" />
               </div>
               <div className="register">
-                <a href="/register">Register</a>
+                <Link to="/register">Register</Link>
               </div>
             </form>
           </div>
